@@ -10,5 +10,6 @@ router.use((err, req, res, next) => {
 });
 
 router.get("/countries", CountryController.getCountries)
+router.get("/countries/:region", CountryController.getByRegion)
 
 module.exports = router;
