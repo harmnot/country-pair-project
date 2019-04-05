@@ -12,5 +12,9 @@ router.use((err, req, res, next) => {
 
 router.get("/countries", CountryController.getCountries)
 router.post("/login-google", UserController.signInGoogle)
+router.get("/countries/:region", CountryController.getByRegion)
+router.get("/countries/name/:value", CountryController.getByName)
+router.get("/countries/currency/:value", CountryController.getByCurrency)
+router.get("/countries/capital/:value", CountryController.getByCapital)
 
 module.exports = router;
