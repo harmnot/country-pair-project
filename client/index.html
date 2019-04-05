@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,5 +42,103 @@
 <script src="js/main.js" charset="utf-8"></script>
 </body>
 
+=======
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="834185680482-74qtj9q1tgf2v9dfk1g5dtuka0ch04dm.apps.googleusercontent.com">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Country</title>
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+  <div class="g-signin2" data-onsuccess="onSign00In"></div>
+
+    <div class="container">
+        <div class="row" id="individual-search" style="width:80%">
+            <div class="input-group" id="input-group-filter-type">
+                <select name='region' class="custom-select" id="inputGroupSelect05">
+                    <option selected>Choose a filter type </option>
+                    <option value="name">Name</option>
+                    <option value="currency">Currency</option>
+                    <option value="capital">Capital City</option>
+                </select>
+                <div class="input-group mb-3">
+                    <form method="post" onsubmit="getSpecificCountry()" id="check-other-repo">
+                            <input type="text" id="filter-value" class="form-control" style="width:30%" placeholder="Value" name="value"> <br>
+                            <input type="submit">
+                    </form>
+                    <!-- <form method="POST" onsubmit="getSpecificCountry()" id="search-filter">
+                            <input type="text" class="form-control" id="filter-value" placeholder="Value" name="value"> 
+                            <button class="btn btn-dark" id='individual-search-button'type="button">Button</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+        <div class="row" id="search-box">
+            <div class="input-group">
+                <select name='region' class="custom-select" id="inputGroupSelect04">
+                    <option selected>Choose a subregion </option>
+                    <option value="africa">Africa</option>
+                    <option value="america">Americas</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="oceania">Oceania</option>
+                </select>
+                <div class="input-group-append" style="width:20%">
+                    <button class="btn btn-outline-secondary" type="button" id="filter-region-button">Hit</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="list-countries">
+        </div>
+
+        <div class="row"></div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">LIST WIKIPEDIA DATAS</div>
+                            <div class="col-md-4 ml-auto"><img style="max-width:200px; max-height:200px"
+                                    src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg"
+                                    class="rounded float-left" alt="..."></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+
+</body>
+>>>>>>> a3448971eacd997761f0c74483097e445eb3ff48
 
 </html>
