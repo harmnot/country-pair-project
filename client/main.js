@@ -15,10 +15,7 @@ function onSignIn(googleUser) {
     })
     .done(function(response) {
         localStorage.setItem('token', response)
-        $('#googleButton').hide()
-        $('#login').hide()
-        $('#data-page').show()
-        $('#login-page').show()
+        success()
     })
     .fail(err => {
         console.log(err)
@@ -30,9 +27,11 @@ function signOut() {
     auth2.signOut().then(function () {
       console.log('User signed out.');
       localStorage.clear()
-      $('#googleButton').show()
+      $('#googleButton').hide()
       $('#data-page').hide()
-      $('#login-page').hide()
+      $('#login-page').show()
+      $('#login').show()
+        // showLogout()
     });
   }
 
@@ -220,10 +219,38 @@ function showGlobe() {
 
 function showHome() {
     $('#globe-picture').hide()
-    $('#googleButton').show()
-    $('#login').show()
+    $('#googleButton').hide()
+    $('#login').hide()
     $('#data-page').show()
+    $('#login-page').show()
+}
+
+function success() {
+    $('#googleButton').hide()
+    $('#login').hide()
+    $('#data-page').show()
+    $('#login-page').show()
+    $('#home').show()
+    $('#logout').show()
+    $('#globe-picture').hide()
+}
+
+function showLogin() {
+    $('#globe-picture').hide()
+    $('#googleButton').show()
+    $('#login').hide()
+    $('#data-page').hide()
     $('#login-page').hide()
+}
+
+function showLogout() {
+    $('#globe-picture').show()
+    $('#googleButton').hide()
+    $('#data-page').hide()
+    $('#login-page').show()
+    $('#home').hide()
+    $('#login').show()
+    $('#logout').hide()
 }
 
 
@@ -245,19 +272,25 @@ $(document).ready(function () {
         showHome()
     })
 
+    $('#logout').click(function() {
+        showLogout()
+    })
+
+    $('#login').click(function() {
+        showLogin()
+    })
+
     if (localStorage.getItem('token')) {
         // udah pernah login
-        $('#googleButton').hide()
-        $('#data-page').show()
-        $('#login-page').show()
-        $('#login').hide()
-        $('#globe-picture').hide()
+        success()
     } else {
         // belum login
-        $('#googleButton').show()
+        $('#googleButton').hide()
         $('#data-page').hide()
-        $('#login-page').hide()
+        $('#login-page').show()
         $('#login').show()
+        $('#home').hide()
+        $('#logout').hide()
         $('#globe-picture').show()
     }
 })
