@@ -2,7 +2,7 @@ const axios = require("axios");
 
 class Wikipedia {
   static wiki(req, res, next) {
-    axios
+    const { data } = axios
       .get(
         `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=${
           req.params.search
