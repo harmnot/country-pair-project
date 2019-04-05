@@ -9,14 +9,36 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Country</title>
 </head>
 
 <body>
 
+
     <div class="container">
-        <div class="row" id="search-box"><div class="input-group">
+        <div class="row" id="individual-search" style="width:80%">
+            <div class="input-group" id="input-group-filter-type">
+                <select name='region' class="custom-select" id="inputGroupSelect05">
+                    <option selected>Choose a filter type </option>
+                    <option value="name">Name</option>
+                    <option value="currency">Currency</option>
+                    <option value="capital">Capital City</option>
+                </select>
+                <div class="input-group mb-3">
+                    <form method="post" onsubmit="getSpecificCountry()" id="check-other-repo">
+                            <input type="text" id="filter-value" class="form-control" style="width:30%" placeholder="Value" name="value"> <br>
+                            <input type="submit">
+                    </form>
+                    <!-- <form method="POST" onsubmit="getSpecificCountry()" id="search-filter">
+                            <input type="text" class="form-control" id="filter-value" placeholder="Value" name="value"> 
+                            <button class="btn btn-dark" id='individual-search-button'type="button">Button</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+        <div class="row" id="search-box">
+            <div class="input-group">
                 <select name='region' class="custom-select" id="inputGroupSelect04">
                     <option selected>Choose a subregion </option>
                     <option value="africa">Africa</option>
@@ -25,14 +47,34 @@
                     <option value="europe">Europe</option>
                     <option value="oceania">Oceania</option>
                 </select>
-                <div class="input-group-append" style="width:30%">
+                <div class="input-group-append" style="width:20%">
                     <button class="btn btn-outline-secondary" type="button" id="filter-region-button">Hit</button>
                 </div>
-            </div></div>
+            </div>
+        </div>
         <div class="row" id="list-countries">
         </div>
 
         <div class="row"></div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">LIST WIKIPEDIA DATAS</div>
+                            <div class="col-md-4 ml-auto"><img style="max-width:200px; max-height:200px"
+                                    src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg"
+                                    class="rounded float-left" alt="..."></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
