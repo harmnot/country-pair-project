@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+const wiki = require("./routes/wiki");
 
 const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
   process.env.MONGO_DB_PIN
@@ -22,6 +23,7 @@ app.use(cors());
 
 // routes go here
 // app.use( '/', routes )
+app.use("/wiki", wiki);
 
 const PORT = process.env.PORT || 3000;
 
