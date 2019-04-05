@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 const userRoutes = require('./routes/user')
 const wikiRoutes = require('./routes/wiki')
-
+const pixabayRoutes = require('./routes/pixabay')
 
 // const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
 //   process.env.MONGO_DB_PIN
@@ -29,6 +29,7 @@ app.use(cors());
 // routes go here 
 app.use( '/', userRoutes)
 // app.use( '/', wikiRoutes)
+app.use('/pixabay', pixabayRoutes)
 
 
 const PORT = process.env.PORT || 3000;
