@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 class UserController {
   static signInGoogle(req, res) {
     let payload = null
+    console.log('sign in google')
     client.verifyIdToken({
       idToken: req.body.id_token,
       audience: process.env.CLIENT_ID
@@ -17,11 +18,13 @@ class UserController {
       })
       .then(user => {
         if(!user) {
+          console.log('ini di if')
           return User.create({
             email: payload.email,
             name: payload.name
           })
         } else {
+          console.log('ini di else')
           let obj = {
             email: payload.email,
             name: payload.name
@@ -38,6 +41,7 @@ class UserController {
         res.status(201).json(token)
       })
       .catch(err => {
+        console.log('ini dari error')
         res.status(500).json(err)
         console.log(err)
       })

@@ -8,21 +8,20 @@ const wiki = require("./routes/wiki");
 const userRoutes = require('./routes/user')
 const pixabayRoutes = require('./routes/pixabay')
 
-const uri = `mongodb+srv://undefined:quxhux-nejni5-figjoR@cluster0-nktui.mongodb.net/country?retryWrites=true`
+// const uri = `mongodb+srv://undefined:quxhux-nejni5-figjoR@cluster0-nktui.mongodb.net/country?retryWrites=true`
+
+const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
+  process.env.MONGO_DB_PIN
+}@cluster0-nktui.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true`;
 
 
-// const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
-//   process.env.MONGO_DB_PIN
-// }@cluster0-nktui.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true`;
-
-
-// mongoose
-//   .connect(
-//     uri,
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => console.log(`======> MongoDB connected <======`))
-//   .catch(err => console.log(err, "ini error"));
+mongoose
+  .connect(
+    uri,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log(`======> MongoDB connected <======`))
+  .catch(err => console.log(err, "ini error"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
