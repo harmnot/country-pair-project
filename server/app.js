@@ -13,6 +13,7 @@ const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
   process.env.MONGO_DB_PIN
 }@cluster0-nktui.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true`;
 
+
 mongoose
   .connect(
     uri,
