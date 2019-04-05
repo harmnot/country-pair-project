@@ -1,4 +1,3 @@
-
 require('dotenv').config()
 
 const express = require("express");
@@ -8,10 +7,7 @@ const app = express();
 const userRoutes = require('./routes/user')
 const wikiRoutes = require('./routes/wiki')
 
-
-const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
-  process.env.MONGO_DB_PIN
-}@cluster0-nktui.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true`;
+const uri = `mongodb+srv://undefined:quxhux-nejni5-figjoR@cluster0-nktui.mongodb.net/country?retryWrites=true`
 
 mongoose
   .connect(
