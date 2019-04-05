@@ -19,7 +19,7 @@
 <body>
 
       <div class="homepage-container" id="login-page">
-      <div class="parent">
+      <div class="parent" id="parent">
       <div class="navbar">
         <div class="logo" id="logo-here" style="cursor: pointer">
           <picture>
@@ -29,11 +29,11 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a id="home" style="cursor: pointer">Home</a>
+            <li id="home"><a style="cursor: pointer">Home</a>
             </li>
-            <li id="login"><a>Login</a>
+            <li id="login" style="cursor: pointer"><a>Login</a>
             </li>
-            <li><a onclick="signOut()" style="cursor: pointer">Logout</a>
+            <li id="logout"><a onclick="signOut()" style="cursor: pointer" id="logout">Logout</a>
             </li>
           </ul>
         </div>
