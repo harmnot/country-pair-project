@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 class UserController {
   static signInGoogle(req, res) {
     let payload = null
+    console.log('sign in google')
     client.verifyIdToken({
       idToken: req.body.id_token,
       audience: process.env.CLIENT_ID
@@ -17,29 +18,34 @@ class UserController {
       })
       .then(user => {
         if(!user) {
+          console.log('sign in if berhasil')
           return User.create({
             email: payload.email,
             name: payload.name
           })
+          .then(() => {
+            let token = jwt.sign({
+              email: payload.email,
+              name: payload.name
+            }, process.env.SECRET_KEY)
+            res.status(201).json(token)
+          })
+          .catch(err => {
+            throw err
+          })
         } else {
+          console.log('ini di sign in else')
           let obj = {
             email: payload.email,
             name: payload.name
           }
-          let token = jwt.sign(obj, 'okok')
+          let token = jwt.sign(obj, process.env.SECRET_KEY)
           res.status(200).json(token)
         }
       })
-      .then(() => {
-        let token = jwt.sign({
-          email: payload.email,
-          name: payload.name
-        }, process.env.SECRET_KEY)
-        res.status(201).json(token)
-      })
       .catch(err => {
-        res.status(500).json(err)
-        console.log(err)
+        console.log('ini dari error')
+        res.status(500).json({err : err.message})
       })
   }
 }

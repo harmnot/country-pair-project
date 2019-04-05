@@ -4,14 +4,15 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const wiki = require("./routes/wiki");
-const userRoutes = require("./routes/user");
-const pixabayRoutes = require("./routes/pixabay");
+const userRoutes = require('./routes/user')
+const pixabayRoutes = require('./routes/pixabay')
 
 // const uri = `mongodb+srv://undefined:quxhux-nejni5-figjoR@cluster0-nktui.mongodb.net/country?retryWrites=true`
 
 const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${
   process.env.MONGO_DB_PIN
 }@cluster0-nktui.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true`;
+
 
 mongoose
   .connect(

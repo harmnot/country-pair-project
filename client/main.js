@@ -6,20 +6,36 @@ function onSignIn(googleUser) {
   console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
   const id_token = googleUser.getAuthResponse().id_token;
 
+ 
   $.ajax({
-    url: "http://localhost:3000/login-google",
-    type: "POST",
-    data: {
-      id_token
-    }
+      url: 'http://localhost:3000/login-google',
+      type: 'POST',
+      data: {
+          id_token
+      }
   })
-    .done(function(response) {
-      localStorage.setItem("token", response);
-    })
-    .fail(err => {
-      console.log(err);
-    });
+  .done(function(response) {
+      localStorage.setItem('token', response)
+      success()
+  })
+  .fail(err => {
+    console.log(err);
+  });
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      localStorage.clear()
+      $('#googleButton').hide()
+      $('#data-page').hide()
+      $('#login-page').show()
+      $('#login').show()
+        // showLogout()
+    });
+  }
+
 
 function fetchAllCountries() {
   $.ajax({
@@ -299,6 +315,7 @@ function getSpecificCountry() {
   }
 }
 
+  
 $(document).ready(function() {
   fetchAllCountries();
 
@@ -307,3 +324,89 @@ $(document).ready(function() {
     reloadSelectedRegion();
   });
 });
+
+function showGlobe() {
+    $('#globe-picture').show()
+    $('#googleButton').hide()
+    $('#login').hide()
+    $('#data-page').hide()
+    $('#login-page').show()
+}
+
+function showHome() {
+    $('#globe-picture').hide()
+    $('#googleButton').hide()
+    $('#login').hide()
+    $('#data-page').show()
+    $('#login-page').show()
+}
+
+function success() {
+    $('#googleButton').hide()
+    $('#login').hide()
+    $('#data-page').show()
+    $('#login-page').show()
+    $('#home').show()
+    $('#logout').show()
+    $('#globe-picture').hide()
+}
+
+function showLogin() {
+    $('#globe-picture').hide()
+    $('#googleButton').show()
+    $('#login').hide()
+    $('#data-page').hide()
+    $('#login-page').hide()
+}
+
+function showLogout() {
+    $('#globe-picture').show()
+    $('#googleButton').hide()
+    $('#data-page').hide()
+    $('#login-page').show()
+    $('#home').hide()
+    $('#login').show()
+    $('#logout').hide()
+}
+
+
+$(document).ready(function () {
+    fetchAllCountries()
+
+    console.log(localStorage.getItem('token'))
+
+    $("#filter-region-button").click(function() {
+        alert( `Filtering...`)
+        reloadSelectedRegion()
+    });
+
+    $('#logo-here').click(function() {
+        showGlobe()
+    })
+
+    $('#home').click(function() {
+        showHome()
+    })
+
+    $('#logout').click(function() {
+        showLogout()
+    })
+
+    $('#login').click(function() {
+        showLogin()
+    })
+
+    if (localStorage.getItem('token')) {
+        // udah pernah login
+        success()
+    } else {
+        // belum login
+        $('#googleButton').hide()
+        $('#data-page').hide()
+        $('#login-page').show()
+        $('#login').show()
+        $('#home').hide()
+        $('#logout').hide()
+        $('#globe-picture').show()
+    }
+})
