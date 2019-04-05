@@ -2,31 +2,25 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-client_id" content="834185680482-74qtj9q1tgf2v9dfk1g5dtuka0ch04dm.apps.googleusercontent.com">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Country</title>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-</head>
-
-<body>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-client_id" content="834185680482-74qtj9q1tgf2v9dfk1g5dtuka0ch04dm.apps.googleusercontent.com">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Country</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/103/three.js" charset="utf-8"></script>
   <script src="https://unpkg.com/three@0.85.0/examples/js/controls/OrbitControls.js"></script>
-   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
       <div class="homepage-container" id="login-page">
       <div class="parent">
       <div class="navbar">
-        <div class="logo">
+        <div class="logo" id="logo-here" style="cursor: pointer">
           <picture>
             <!-- <img src="http://fillmurray.com/50/50" alt="logo"> -->
             <h1>logo here</h1>
@@ -34,11 +28,11 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="#home">Home</a>
+            <li><a id="home" style="cursor: pointer">Home</a>
             </li>
-            <li><a href="#login">Login</a>
+            <li id="login"><a>Login</a>
             </li>
-            <li><a href="#logout">Logout</a>
+            <li><a onclick="signOut()" style="cursor: pointer">Logout</a>
             </li>
           </ul>
         </div>
@@ -47,7 +41,7 @@
     </div>
  
   
-  <div class="g-signin2" data-onsuccess="onSign00In"></div>
+  <div class="g-signin2" data-onsuccess="onSignIn" id="googleButton"></div>
 
   <div class="normal-page-container" id="data-page">
     <div class="container">
@@ -116,9 +110,9 @@
   
   
   
-      <div class="wrapper">
+      <div id="globe-picture" class="wrapper">
       <h1>this is background</h1>
-      <!-- <div style="height: 1600px"></div> -->
+      <div style="height: 1600px"></div>
       </div>
       <script src="js/threeD.js" charset="utf-8"></script>
       <script src="js/main.js" charset="utf-8"></script>

@@ -6,7 +6,6 @@ function onSignIn(googleUser) {
     console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
     const id_token = googleUser.getAuthResponse().id_token;
 
-    
     $.ajax({
         url: 'http://localhost:3000/login-google',
         type: 'POST',
@@ -16,11 +15,27 @@ function onSignIn(googleUser) {
     })
     .done(function(response) {
         localStorage.setItem('token', response)
+        $('#googleButton').hide()
+        $('#login').hide()
+        $('#data-page').show()
+        $('#login-page').show()
     })
     .fail(err => {
         console.log(err)
     })
 }
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      localStorage.clear()
+      $('#googleButton').show()
+      $('#data-page').hide()
+      $('#login-page').hide()
+    });
+  }
+
 
 function fetchAllCountries() {
     $.ajax({
@@ -191,20 +206,55 @@ function getSpecificCountry() {
     }
 }
 
+function showGlobe() {
+    $('#globe-picture').show()
+    $('#googleButton').hide()
+    $('#login').hide()
+    $('#data-page').hide()
+    $('#login-page').show()
+}
 
-
+function showHome() {
+    $('#globe-picture').hide()
+    $('#googleButton').show()
+    $('#login').show()
+    $('#data-page').show()
+    $('#login-page').hide()
+}
 
 
 $(document).ready(function () {
     fetchAllCountries()
+
+    console.log(localStorage.getItem('token'))
 
     $("#filter-region-button").click(function() {
         alert( `Filtering...`)
         reloadSelectedRegion()
     });
 
-    $('#modal-button').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })
+    $('#logo-here').click(function() {
+        showGlobe()
+    })
+
+    $('#home').click(function() {
+        showHome()
+    })
+
+    if (localStorage.getItem('token')) {
+        // udah pernah login
+        $('#googleButton').hide()
+        $('#data-page').show()
+        $('#login-page').show()
+        $('#login').hide()
+        $('#globe-picture').hide()
+    } else {
+        // belum login
+        $('#googleButton').show()
+        $('#data-page').hide()
+        $('#login-page').hide()
+        $('#login').show()
+        $('#globe-picture').show()
+    }
 
 })
