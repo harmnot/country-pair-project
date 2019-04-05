@@ -57,7 +57,7 @@ function fetchAllCountries() {
                 <li class="list-group-item">Capital City : ${country.capital}</li>
             </ul>
             <div class="card-body">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Pop Me Up!</button>
+            <button type="button" onclick="getWikis('${country.name}')" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Pop Me Up!</button>
             </div>
             </div></div>`
             )
@@ -68,6 +68,10 @@ function fetchAllCountries() {
     .fail(function(jqXHR, textSatus) {
         console.log('request failed', textSatus)
     })
+}
+
+function getWikis(data) {
+    console.log(data)
 }
 
 function reloadSelectedRegion() {
@@ -90,7 +94,7 @@ function reloadSelectedRegion() {
                 <li class="list-group-item">Population : ${country.population}</li>
                 <li class="list-group-item">Currency : ${country.currencies[0].name}</li>
                 <li class="list-group-item">Capital City : ${country.capital}</li>
-            </ul>
+            </ul> 
             <div class="card-body">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Pop Me Up!</button>
             </div>
@@ -256,5 +260,4 @@ $(document).ready(function () {
         $('#login').show()
         $('#globe-picture').show()
     }
-
 })
