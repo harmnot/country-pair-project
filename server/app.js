@@ -1,5 +1,4 @@
-require('dotenv').config()
-
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -28,11 +27,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // routes go here
-// app.use( '/', routes )
+app.use("/", userRoutes);
 app.use("/wiki", wiki);
-app.use( '/', userRoutes)
-app.use('/pixabay', pixabayRoutes)
-
+app.use("/pixabay", pixabayRoutes);
 
 const PORT = process.env.PORT || 3000;
 
