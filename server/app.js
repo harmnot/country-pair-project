@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 const userRoutes = require('./routes/user')
 const wikiRoutes = require('./routes/wiki')
+const pixabayRoutes = require('./routes/pixabay')
 
 const uri = `mongodb+srv://undefined:quxhux-nejni5-figjoR@cluster0-nktui.mongodb.net/country?retryWrites=true`
 
@@ -29,6 +30,7 @@ app.use(cors());
 // routes go here 
 app.use( '/', userRoutes)
 // app.use( '/', wikiRoutes)
+app.use('/pixabay', pixabayRoutes)
 
 
 const PORT = process.env.PORT || 3000;
