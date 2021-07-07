@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Wikipedia = require("../controller/wikipedia.js");
-
-router.get("/:search", Wikipedia.wiki);
+const PixabayController = require('../controller/pixabay')
 
 // middleware for checking if ERROR
 router.use((err, req, res, next) => {
@@ -10,5 +8,8 @@ router.use((err, req, res, next) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/:countryname")
+
 
 module.exports = router;

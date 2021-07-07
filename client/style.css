@@ -1,0 +1,19 @@
+.container {
+    padding-top: 100px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+
+#search-box {
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 0px;
+}
+
+#list-countries {
+    padding-right: 30px;
+    padding-bottom: 50px;
+}
+
+
